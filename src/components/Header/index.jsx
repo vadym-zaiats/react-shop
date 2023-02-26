@@ -7,13 +7,13 @@ class Header extends Component {
   render() {
     return (
       <div className={styles.header}>
-        <div className={styles.header_basket}>
-          <div>0</div>
-          <img src={basket} alt="basket" />
-        </div>
         <div className={styles.header_favourite}>
           <div>0</div>
           <img src={favourite} alt="favourite" />
+        </div>
+        <div className={styles.header_basket}>
+          <div>0</div>
+          <img src={basket} alt="basket" />
         </div>
       </div>
     );

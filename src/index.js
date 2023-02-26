@@ -45,9 +45,10 @@ class App extends Component {
       });
   };
   secondModal = () => {
-    const setActive = this.state.modals;
-    setActive.isActive = !setActive.isActive;
-    this.setState({ setActive });
+    // const setActive = this.state.modals;
+    // setActive.isActive = !setActive.isActive;
+    // this.setState({ setActive });
+    console.log("hhh");
   };
 
   render() {
@@ -61,7 +62,7 @@ class App extends Component {
       <>
         <Header />
         <div className={styles.main}>
-          <CardContainer products={products} />
+          <CardContainer products={products} action={this.secondModal} />
           <Basket />
         </div>
 

@@ -7,7 +7,7 @@ import Button from "../Button";
 
 class CardItem extends Component {
   render() {
-    const { logo, title, color, price, code } = this.props;
+    const { logo, title, color, price, code, action } = this.props;
     return (
       <div className={styles.item}>
         <img className={styles.size} src={logo} alt="logo" />
@@ -15,7 +15,7 @@ class CardItem extends Component {
         <p>Color: {color}</p>
         <p>Price: {price}$</p>
         <p>Barcode: {code}</p>
-        <Button text="Add to basket" />
+        <Button text="Add to basket" onClick={action} />
         {/* <img src={isFavorite ? star : starAdd} alt="Favourite" /> */}
       </div>
     );

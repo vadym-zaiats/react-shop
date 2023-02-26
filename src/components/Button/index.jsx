@@ -1,15 +1,9 @@
-import React from "react";
+import React, { Component } from "react";
 import styles from "./Button.module.scss";
-class Button extends React.Component {
+class Button extends Component {
   render() {
-    return (
-      <button
-      // className={this.props.backgroundColor}
-      // onClick={this.props.onClick}
-      >
-        {this.props.text}
-      </button>
-    );
+    const { text, onClick } = this.props;
+    return <button onClick={onClick}>{text}</button>;
   }
 }
 

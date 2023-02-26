@@ -4,7 +4,7 @@ import CardItem from "../CardItem";
 import styles from "./CardContainer.module.scss";
 class CardContainer extends Component {
   render() {
-    const { products } = this.props;
+    const { products, action } = this.props;
     return (
       <div>
         <ul className={styles.list}>
@@ -16,6 +16,7 @@ class CardContainer extends Component {
                 color={color}
                 price={price}
                 code={barcode}
+                action={action}
                 // isFavorite={}
               />
             </li>
