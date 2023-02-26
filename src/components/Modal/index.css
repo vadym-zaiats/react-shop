@@ -1,0 +1,43 @@
+.modal-overlay {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-window {
+  color: aliceblue;
+  position: relative;
+}
+
+.modal-header {
+  padding: 10px 15px;
+  background-color: #d64531;
+}
+
+.modal-content {
+  font-size: 12px;
+  padding: 10px 15px;
+  text-align: center;
+  background-color: #ea4b35;
+}
+
+.modal-question {
+  margin-top: 10px;
+}
+
+/* .modal-footer {
+  padding: 10px 0;
+  text-align: center;
+  background-color: #ea4b35;
+} */
+.modal-footer button {
+  width: 75px;
+  height: 35px;
+  margin: 0 5px;
+}

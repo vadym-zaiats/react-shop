@@ -1,13 +1,40 @@
 import ReactDOM from "react-dom/client";
 import React, { Component } from "react";
+import styles from "./main.module.scss";
 import Header from "./components/Header";
 import CardContainer from "./components/CardContainer";
+import Button from "./components/Button";
+import Modal from "./components/Modal";
+import Basket from "./components/Basket";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       products: null,
+      modal: {
+        id: 1,
+        isActive: false,
+        question: "Do you want to add this product to basket?",
+        actions: [
+          <Button
+            text={"Ok"}
+            backgroundColor="red-button"
+            onClick={() => {
+              this.secondModal();
+              alert("You agreed this action");
+            }}
+          />,
+          <Button
+            text={"Сancel"}
+            backgroundColor="red-button"
+            onClick={() => {
+              this.secondModal();
+              alert("You canceled this action");
+            }}
+          />,
+        ],
+      },
     };
   }
   componentDidMount = () => {
@@ -17,6 +44,12 @@ class App extends Component {
         this.setState({ products: res });
       });
   };
+  secondModal = () => {
+    const setActive = this.state.modals;
+    setActive.isActive = !setActive.isActive;
+    this.setState({ setActive });
+  };
+
   render() {
     const { products } = this.state;
 
@@ -27,7 +60,16 @@ class App extends Component {
     return (
       <>
         <Header />
-        <CardContainer products={products} />
+        <div className={styles.main}>
+          <CardContainer products={products} />
+          <Basket />
+        </div>
+
+        <Modal
+          isActive={this.state.modal.isActive}
+          question={this.state.modal.question}
+          actions={this.state.modal.actions}
+        />
       </>
     );
   }

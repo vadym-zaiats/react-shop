@@ -1,8 +1,9 @@
 .header {
-  max-width: 800px;
-  margin: 10px auto;
+  padding: 10px;
+  margin: 10px;
   display: flex;
   justify-content: space-around;
+  border: 1px solid blue;
   &_basket,
   &_favourite {
     display: flex;
