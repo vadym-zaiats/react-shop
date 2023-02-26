@@ -1,0 +1,72 @@
+[
+  {
+    "name": "Audi",
+    "price": 10000,
+    "picture": "https://cdn.icon-icons.com/icons2/2402/PNG/512/audi_logo_icon_145842.png",
+    "barcode": 123456,
+    "color": "Black"
+  },
+  {
+    "name": "BMW",
+    "price": 11000,
+    "picture": "https://cdn.icon-icons.com/icons2/1834/PNG/512/iconfinderbmwlogo4140436-115966_115915.png",
+    "barcode": 134567,
+    "color": "Red"
+  },
+  {
+    "name": "Mercedes",
+    "price": 12000,
+    "picture": "https://cdn.iconscout.com/icon/free/png-512/mercedes-202837.png?f=avif&w=512",
+    "barcode": 1456789,
+    "color": "Blue"
+  },
+  {
+    "name": "Volkswagen",
+    "price": 9000,
+    "picture": "https://cdn.icon-icons.com/icons2/1834/PNG/512/iconfindervwlogo4140434-115963_115918.png",
+    "barcode": 1567890,
+    "color": "Pink"
+  },
+  {
+    "name": "Peugeot",
+    "price": 7500,
+    "picture": "https://cdn.icon-icons.com/icons2/2402/PNG/512/peugeot_logo_icon_145788.png",
+    "barcode": 234567,
+    "color": "Yellow"
+  },
+  {
+    "name": "Renault",
+    "price": 7000,
+    "picture": "https://cdn.iconscout.com/icon/free/png-512/renault-3441209-2874314.png?f=avif&w=512",
+    "barcode": 456789,
+    "color": "Green"
+  },
+  {
+    "name": "Kia",
+    "price": 8000,
+    "picture": "https://cdn.iconscout.com/icon/free/png-512/kia-3166557-2641347.png?f=avif&w=512",
+    "barcode": 567890,
+    "color": "Grey"
+  },
+  {
+    "name": "Hyundai",
+    "price": 8000,
+    "picture": "https://cdn.iconscout.com/icon/free/png-512/hyundai-3441011-2874120.png?f=avif&w=512",
+    "barcode": 285016,
+    "color": "Violet"
+  },
+  {
+    "name": "Toyota",
+    "price": 11000,
+    "picture": "https://cdn.iconscout.com/icon/free/png-512/toyota-7-827471.png?f=avif&w=512",
+    "barcode": 987654,
+    "color": "Purple"
+  },
+  {
+    "name": "Chevrolet",
+    "price": 8000,
+    "picture": "https://cdn.icon-icons.com/icons2/2402/PNG/512/chevrolet_logo_icon_145836.png",
+    "barcode": 876543,
+    "color": "White"
+  }
+]

@@ -1,0 +1,11 @@
+.header {
+  max-width: 800px;
+  margin: 10px auto;
+  display: flex;
+  justify-content: space-around;
+  &_basket,
+  &_favourite {
+    display: flex;
+    align-items: center;
+  }
+}
