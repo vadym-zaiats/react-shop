@@ -13,27 +13,8 @@ class App extends Component {
     this.state = {
       products: null,
       modal: {
-        id: 1,
         isActive: false,
         question: "Do you want to add this product to basket?",
-        actions: [
-          <Button
-            text={"Ok"}
-            backgroundColor="red-button"
-            onClick={() => {
-              this.secondModal();
-              alert("You agreed this action");
-            }}
-          />,
-          <Button
-            text={"Сancel"}
-            backgroundColor="red-button"
-            onClick={() => {
-              this.secondModal();
-              alert("You canceled this action");
-            }}
-          />,
-        ],
       },
     };
   }
@@ -44,13 +25,16 @@ class App extends Component {
         this.setState({ products: res });
       });
   };
-  secondModal = () => {
-    // const setActive = this.state.modals;
-    // setActive.isActive = !setActive.isActive;
-    // this.setState({ setActive });
-    console.log("hhh");
+  openModal = () => {
+    const setActive = this.state.modal;
+    setActive.isActive = !setActive.isActive;
+    this.setState({ setActive });
   };
-
+  closeModal = (e) => {
+    if (e.target.classList.contains("modal-overlay")) {
+      this.openModal();
+    }
+  };
   render() {
     const { products } = this.state;
 
@@ -62,7 +46,7 @@ class App extends Component {
       <>
         <Header />
         <div className={styles.main}>
-          <CardContainer products={products} action={this.secondModal} />
+          <CardContainer products={products} action={this.openModal} />
           <Basket />
         </div>
 
@@ -70,6 +54,7 @@ class App extends Component {
           isActive={this.state.modal.isActive}
           question={this.state.modal.question}
           actions={this.state.modal.actions}
+          onClick={this.openModal}
         />
       </>
     );

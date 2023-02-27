@@ -1,0 +1,28 @@
+.modal_overlay {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal_window {
+  width: 350px;
+  height: 150px;
+  background-color: #bea1cb;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+
+  &_buttons {
+    width: 110px;
+    display: flex;
+    justify-content: space-between;
+  }
+}

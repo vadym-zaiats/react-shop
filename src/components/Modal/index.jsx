@@ -1,18 +1,32 @@
-import React from "react";
-import "../Modal/index.css";
-import styled from "styled-components";
-const FooterButtons = styled.div`
-  padding: 10px 0;
-  text-align: center;
-  background-color: #ea4b35;
-`;
-class Modal extends React.Component {
+import React, { Component } from "react";
+import Button from "../Button";
+import styles from "./Modal.module.scss";
+
+class Modal extends Component {
   render() {
     return this.props.isActive ? (
-      <div className="modal-overlay" onClick={this.props.onClick}>
-        <div className="modal-window">
-          <div className="modal-question">{this.props.question}</div>
-          <button className="modal-footer">{this.props.actions}</button>
+      <div className={styles.modal_overlay} onClick={this.props.onClick}>
+        <div className={styles.modal_window}>
+          <div>{this.props.question}</div>
+          <div className={styles.modal_window_buttons}>
+            <Button
+              text={"Ok"}
+              onClick={() => {
+                alert("You added car on basket!");
+                const setActive = this.state.modal;
+                setActive.isActive = !setActive.isActive;
+                this.setState({ setActive });
+              }}
+            />
+
+            <Button
+              text={"Сancel"}
+              onClick={() => {
+                alert("You canceled this action");
+                this.openModal();
+              }}
+            />
+          </div>
         </div>
       </div>
     ) : null;
