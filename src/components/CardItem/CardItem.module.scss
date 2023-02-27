@@ -1,9 +1,13 @@
 .item {
   text-align: center;
-  border: 1px solid red;
+  border: 1px solid rgb(116, 161, 122);
   margin: 5px;
   padding: 10px;
 }
 .size {
   width: 75px;
+}
+.footer {
+  display: flex;
+  justify-content: space-between;
 }

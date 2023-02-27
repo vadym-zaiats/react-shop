@@ -1,10 +1,9 @@
-import ReactDOM from "react-dom/client";
 import React, { Component } from "react";
 import CardItem from "../CardItem";
 import styles from "./CardContainer.module.scss";
 class CardContainer extends Component {
   render() {
-    const { products, action } = this.props;
+    const { products, action, addToFav } = this.props;
     return (
       <div>
         <ul className={styles.list}>
@@ -17,6 +16,7 @@ class CardContainer extends Component {
                 price={price}
                 code={barcode}
                 action={action}
+                addToFavourite={addToFav}
                 // isFavorite={}
               />
             </li>

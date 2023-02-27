@@ -3,9 +3,8 @@ import React, { Component } from "react";
 import styles from "./main.module.scss";
 import Header from "./components/Header";
 import CardContainer from "./components/CardContainer";
-import Button from "./components/Button";
 import Modal from "./components/Modal";
-import Basket from "./components/Basket";
+// import Basket from "./components/Basket";
 
 class App extends Component {
   constructor(props) {
@@ -46,8 +45,13 @@ class App extends Component {
       <>
         <Header />
         <div className={styles.main}>
-          <CardContainer products={products} action={this.openModal} />
-          <Basket />
+          <CardContainer
+            products={products}
+            favourite={this.state.favourite}
+            action={this.openModal}
+            addToFav={this.addToFav}
+          />
+          {/* <Basket /> */}
         </div>
 
         <Modal
