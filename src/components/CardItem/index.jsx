@@ -12,7 +12,6 @@ class CardItem extends Component {
     };
   }
   addToFav = () => {
-    console.log(this.state.favourite);
     this.setState({ favourite: !this.state.favourite });
   };
   render() {
@@ -29,7 +28,7 @@ class CardItem extends Component {
           <img
             src={this.state.favourite ? star : starAdd}
             onClick={this.addToFav}
-            alt="Favourite"
+            alt={this.state.favourite ? "favourite" : "not-favourite"}
           />
         </div>
       </div>
