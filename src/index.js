@@ -10,6 +10,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      favourite: [],
       products: null,
       modal: {
         isActive: false,
@@ -34,6 +35,38 @@ class App extends Component {
       this.openModal();
     }
   };
+  addToFav = (card) => {
+    console.log("hhh");
+    this.setState((current) => {
+      const carts = [...current.favourite];
+
+      const index = carts.findIndex((el) => el.id === card.id);
+
+      if (index === -1) {
+        carts.push({ ...card, count: 1 });
+      } else {
+        carts[index].count += 1;
+      }
+
+      localStorage.setItem("favourite", JSON.stringify(carts));
+      return { carts };
+    });
+  };
+  incrementFavItem = (id) => {
+    this.setState((current) => {
+      const carts = [...current.carts];
+
+      const index = carts.findIndex((el) => el.id === id);
+
+      if (index !== -1) {
+        carts[index].count += 1;
+      }
+
+      localStorage.setItem("carts", JSON.stringify(carts));
+      return { carts };
+    });
+  };
+
   render() {
     const { products } = this.state;
 
@@ -47,13 +80,11 @@ class App extends Component {
         <div className={styles.main}>
           <CardContainer
             products={products}
-            favourite={this.state.favourite}
             action={this.openModal}
             addToFav={this.addToFav}
           />
           {/* <Basket /> */}
         </div>
-
         <Modal
           isActive={this.state.modal.isActive}
           question={this.state.modal.question}

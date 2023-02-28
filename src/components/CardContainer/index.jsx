@@ -5,10 +5,10 @@ class CardContainer extends Component {
   render() {
     const { products, action, addToFav } = this.props;
     return (
-      <div>
+      <>
         <ul className={styles.list}>
           {products.map(({ id, name, price, picture, barcode, color }) => (
-            <li key={id}>
+            <li key={id} className={styles.item}>
               <CardItem
                 logo={picture}
                 title={name}
@@ -17,12 +17,11 @@ class CardContainer extends Component {
                 code={barcode}
                 action={action}
                 addToFavourite={addToFav}
-                // isFavorite={}
               />
             </li>
           ))}
         </ul>
-      </div>
+      </>
     );
   }
 }

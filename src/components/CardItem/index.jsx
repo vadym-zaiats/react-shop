@@ -9,15 +9,20 @@ class CardItem extends Component {
     super(props);
     this.state = {
       favourite: false,
+      favProducts: [],
     };
   }
   addToFav = () => {
     this.setState({ favourite: !this.state.favourite });
+    // const item = document.querySelector(".item").innerHTML;
+    // localStorage.setItem("product", item);
   };
+
   render() {
-    const { logo, title, color, price, code, action } = this.props;
+    const { logo, title, color, price, code, action, addToFavourite } =
+      this.props;
     return (
-      <div className={styles.item}>
+      <>
         <img className={styles.size} src={logo} alt="logo" />
         <p>Brand: {title}</p>
         <p>Color: {color}</p>
@@ -27,11 +32,14 @@ class CardItem extends Component {
           <Button text="Add to basket" onClick={action} />
           <img
             src={this.state.favourite ? star : starAdd}
-            onClick={this.addToFav}
+            onClick={() => {
+              this.addToFav();
+              addToFavourite({ title });
+            }}
             alt={this.state.favourite ? "favourite" : "not-favourite"}
           />
         </div>
-      </div>
+      </>
     );
   }
 }
