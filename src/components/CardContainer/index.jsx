@@ -3,7 +3,8 @@ import CardItem from "../CardItem";
 import styles from "./CardContainer.module.scss";
 class CardContainer extends Component {
   render() {
-    const { products, action, addToFav } = this.props;
+    const { products, action } = this.props;
+
     return (
       <>
         <ul className={styles.list}>
@@ -16,7 +17,7 @@ class CardContainer extends Component {
                 price={price}
                 code={barcode}
                 action={action}
-                addToFavourite={addToFav}
+                // addToFavourite={addToFav}
               />
             </li>
           ))}

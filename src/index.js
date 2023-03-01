@@ -4,13 +4,14 @@ import styles from "./main.module.scss";
 import Header from "./components/Header";
 import CardContainer from "./components/CardContainer";
 import Modal from "./components/Modal";
+import { logDOM } from "@testing-library/react";
 // import Basket from "./components/Basket";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      favourite: [],
+      // favourite: [],
       products: null,
       modal: {
         isActive: false,
@@ -35,37 +36,14 @@ class App extends Component {
       this.openModal();
     }
   };
-  addToFav = (card) => {
-    console.log("hhh");
-    this.setState((current) => {
-      const carts = [...current.favourite];
-
-      const index = carts.findIndex((el) => el.id === card.id);
-
-      if (index === -1) {
-        carts.push({ ...card, count: 1 });
-      } else {
-        carts[index].count += 1;
-      }
-
-      localStorage.setItem("favourite", JSON.stringify(carts));
-      return { carts };
-    });
-  };
-  incrementFavItem = (id) => {
-    this.setState((current) => {
-      const carts = [...current.carts];
-
-      const index = carts.findIndex((el) => el.id === id);
-
-      if (index !== -1) {
-        carts[index].count += 1;
-      }
-
-      localStorage.setItem("carts", JSON.stringify(carts));
-      return { carts };
-    });
-  };
+  // addToFav = (card) => {
+  //   this.setState((states) => {
+  //     let allFav = [...states.favourite];
+  //     allFav.push(card);
+  //     localStorage.setItem("favourite", JSON.stringify(allFav));
+  //     return { allFav };
+  //   });
+  // };
 
   render() {
     const { products } = this.state;
@@ -81,7 +59,7 @@ class App extends Component {
           <CardContainer
             products={products}
             action={this.openModal}
-            addToFav={this.addToFav}
+            // addToFav={this.addToFav}
           />
           {/* <Basket /> */}
         </div>

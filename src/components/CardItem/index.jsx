@@ -9,18 +9,31 @@ class CardItem extends Component {
     super(props);
     this.state = {
       favourite: false,
-      favProducts: [],
+      favourites: "",
+      code: "",
     };
   }
-  addToFav = () => {
-    this.setState({ favourite: !this.state.favourite });
-    // const item = document.querySelector(".item").innerHTML;
-    // localStorage.setItem("product", item);
+  componentDidMount = () => {
+    const { code } = this.props;
+    for (var i = 0; i < localStorage.length; i++) {
+      if (+localStorage.getItem(localStorage.key(i)) === code) {
+        this.setState({ favourite: true });
+      }
+    }
   };
-
+  componentDidUpdate = (prevState) => {
+    console.log(prevState.favourite);
+  };
+  addToFav = (position) => {
+    this.setState((states) => {
+      let allFav = [...states.favourites];
+      allFav.push(position);
+      localStorage.setItem(position.title, JSON.stringify(position.code));
+      return { allFav };
+    });
+  };
   render() {
-    const { logo, title, color, price, code, action, addToFavourite } =
-      this.props;
+    const { logo, title, color, price, code, action } = this.props;
     return (
       <>
         <img className={styles.size} src={logo} alt="logo" />
@@ -33,10 +46,9 @@ class CardItem extends Component {
           <img
             src={this.state.favourite ? star : starAdd}
             onClick={() => {
-              this.addToFav();
-              addToFavourite({ title });
+              this.addToFav({ title, code });
             }}
-            alt={this.state.favourite ? "favourite" : "not-favourite"}
+            alt={"is-favourite"}
           />
         </div>
       </>
