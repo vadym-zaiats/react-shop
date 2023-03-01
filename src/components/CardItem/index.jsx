@@ -21,9 +21,7 @@ class CardItem extends Component {
       }
     }
   };
-  componentDidUpdate = (prevState) => {
-    console.log(prevState.favourite);
-  };
+
   addToFav = (position) => {
     this.setState((states) => {
       let allFav = [...states.favourites];
