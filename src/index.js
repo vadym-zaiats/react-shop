@@ -40,7 +40,7 @@ class App extends Component {
     this.setState({ setActive });
   };
   closeModal = (e) => {
-    if (e.target.classList.contains("modal-overlay")) {
+    if (e.target.classList.contains("Modal_modal_overlay__0uG9G")) {
       this.openModal();
     }
   };
@@ -62,7 +62,6 @@ class App extends Component {
           };
         }
       }
-      console.log("hhh");
       allFavCars.push(card);
       localStorage.setItem("favourites", JSON.stringify(allFavCars));
       return { favourites: allFavCars };
@@ -92,7 +91,7 @@ class App extends Component {
           isActive={this.state.modal.isActive}
           question={this.state.modal.question}
           actions={this.state.modal.actions}
-          onClick={this.openModal}
+          onClick={this.closeModal}
         />
       </>
     );
