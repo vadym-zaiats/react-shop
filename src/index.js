@@ -11,7 +11,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // favourite: [],
+      favourite: [],
       products: null,
       modal: {
         isActive: false,
@@ -36,14 +36,14 @@ class App extends Component {
       this.openModal();
     }
   };
-  // addToFav = (card) => {
-  //   this.setState((states) => {
-  //     let allFav = [...states.favourite];
-  //     allFav.push(card);
-  //     localStorage.setItem("favourite", JSON.stringify(allFav));
-  //     return { allFav };
-  //   });
-  // };
+  addToFav = (card) => {
+    this.setState((states) => {
+      let allFav = [...states.favourite];
+      allFav.push(card);
+      localStorage.setItem("favourite", JSON.stringify(allFav));
+      return { allFav };
+    });
+  };
 
   render() {
     const { products } = this.state;
@@ -59,7 +59,7 @@ class App extends Component {
           <CardContainer
             products={products}
             action={this.openModal}
-            // addToFav={this.addToFav}
+            addToFav={this.addToFav}
           />
           {/* <Basket /> */}
         </div>

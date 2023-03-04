@@ -9,8 +9,6 @@ class CardItem extends Component {
     super(props);
     this.state = {
       favourite: false,
-      favourites: "",
-      code: "",
     };
   }
   componentDidMount = () => {
@@ -31,7 +29,8 @@ class CardItem extends Component {
     });
   };
   render() {
-    const { logo, title, color, price, code, action } = this.props;
+    const { logo, title, color, price, code, action, addToFavourite } =
+      this.props;
     return (
       <>
         <img className={styles.size} src={logo} alt="logo" />
@@ -44,7 +43,7 @@ class CardItem extends Component {
           <img
             src={this.state.favourite ? star : starAdd}
             onClick={() => {
-              this.addToFav({ title, code });
+              addToFavourite({ title, code });
             }}
             alt={"is-favourite"}
           />
