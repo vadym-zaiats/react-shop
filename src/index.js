@@ -47,13 +47,20 @@ class App extends Component {
   addToFav = (card) => {
     this.setState((states) => {
       let allFav = [...states.favourites];
-      for (let car of allFav) {
-        if (car.code === card.code) {
-          console.log("Це авто вже є у favourites, треба видалити");
-        } else {
-          allFav.push(card);
-          localStorage.setItem("favourites", JSON.stringify(allFav));
-          return { favourites: allFav };
+      if (allFav.length === 0) {
+        allFav.push(card);
+        localStorage.setItem("favourites", JSON.stringify(allFav));
+        return { favourites: allFav };
+      } else {
+        for (let car of allFav) {
+          if (car.code === card.code) {
+            allFav.splice(card);
+            return console.log("Це авто вже є у favourites, треба видалити");
+          } else {
+            allFav.push(card);
+            localStorage.setItem("favourites", JSON.stringify(allFav));
+            return { favourites: allFav };
+          }
         }
       }
     });
@@ -68,7 +75,7 @@ class App extends Component {
 
     return (
       <>
-        <Header />
+        <Header favourites={this.state.favourites.length} />
         <div className={styles.main}>
           <CardContainer
             products={products}

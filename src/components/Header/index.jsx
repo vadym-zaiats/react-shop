@@ -8,7 +8,7 @@ class Header extends Component {
     return (
       <div className={styles.header}>
         <div className={styles.header_favourite}>
-          <div>0</div>
+          <div>{this.props.favourites}</div>
           <img src={favourite} alt="favourite" />
         </div>
         <div className={styles.header_basket}>
