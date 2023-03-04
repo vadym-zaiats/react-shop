@@ -1,6 +1,7 @@
 .list {
   border: 1px solid black;
   display: flex;
+  justify-content: space-evenly;
   flex-wrap: wrap;
 }
 .item {
