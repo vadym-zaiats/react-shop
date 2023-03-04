@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import star from "../../img/star.svg";
-import starAdd from "../../img/star0.svg";
+import addStar from "../../img/star0.svg";
 import styles from "./CardItem.module.scss";
 import Button from "../Button";
 
@@ -12,31 +12,14 @@ class CardItem extends Component {
     };
   }
   componentDidMount = () => {
-    this.setState((states) => {
+    this.setState(() => {
       const { favourites, code } = this.props;
-      console.log(favourites);
       for (const car of favourites) {
         if (car.code === code) {
           return { favourite: true };
         }
       }
     });
-    // if (allFav.length === 0) {
-    //   allFav.push(card);
-    //   localStorage.setItem("favourites", JSON.stringify(allFav));
-    //   return { favourites: allFav };
-    // } else {
-    //   for (let car of allFav) {
-    //     if (car.code === card.code) {
-    //       allFav.splice(card);
-    //       return console.log("Це авто вже є у favourites, треба видалити");
-    //     } else {
-    //       allFav.push(card);
-    //       localStorage.setItem("favourites", JSON.stringify(allFav));
-    //       return { favourites: allFav };
-    //     }
-    //   }
-    // }
   };
 
   render() {
@@ -52,7 +35,7 @@ class CardItem extends Component {
         <div className={styles.footer}>
           <Button text="Add to basket" onClick={action} />
           <img
-            src={this.state.favourite ? star : starAdd}
+            src={this.state.favourite ? star : addStar}
             onClick={() => {
               addToFavourite({ title, code });
             }}
