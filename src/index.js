@@ -11,7 +11,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      favourite: [],
+      favourites: [],
       products: null,
       modal: {
         isActive: false,
@@ -26,6 +26,13 @@ class App extends Component {
       .then((res) => {
         this.setState({ products: res });
       });
+    // витягуємо favourite з localStorage
+    this.setState(() => {
+      let carsFromJson = JSON.parse(localStorage.getItem("favourites"));
+      if (carsFromJson) {
+        return { favourites: carsFromJson };
+      }
+    });
   };
   openModal = () => {
     const setActive = this.state.modal;
@@ -38,23 +45,18 @@ class App extends Component {
     }
   };
   addToFav = (card) => {
-    if (localStorage.getItem("favourite")) {
-      let favArr = JSON.parse(localStorage.getItem("favourite"));
-
-      console.log(favArr);
-    } else {
-      // this.setState((states) => {
-      //   if (localStorage.getItem("favourite")) {
-      //     console.log("пусто");
-      //   }
-      //   console.log([...states.favourite]);
-      //   let allFav = [...states.favourite];
-      //   allFav.push(card);
-      //   localStorage.setItem("favourite", JSON.stringify(allFav));
-      //   console.log(allFav);
-      //   return { allFav };
-      // });
-    }
+    this.setState((states) => {
+      let allFav = [...states.favourites];
+      for (let car of allFav) {
+        if (car.code === card.code) {
+          console.log("Це авто вже є у favourites, треба видалити");
+        } else {
+          allFav.push(card);
+          localStorage.setItem("favourites", JSON.stringify(allFav));
+          return { favourites: allFav };
+        }
+      }
+    });
   };
 
   render() {
