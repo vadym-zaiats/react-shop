@@ -47,29 +47,25 @@ class App extends Component {
   addToFav = (card) => {
     this.setState((states) => {
       let allFavCars = [...states.favourites];
-      if (allFavCars.length === 0) {
-        console.log("Цього авто нема, додаю");
-        allFavCars.push(card);
-        localStorage.setItem("favourites", JSON.stringify(allFavCars));
-        return { favourites: allFavCars };
-      } else {
-        for (let car of allFavCars) {
-          if (car.code === card.code) {
-            localStorage.setItem(
-              "favourites",
-              JSON.stringify(
-                this.state.favourites.filter((el) => el.code !== card.code)
-              )
-            );
-
-            return {
-              favourites: this.state.favourites.filter(
-                (el) => el.code !== card.code
-              ),
-            };
-          }
+      for (let car of allFavCars) {
+        if (car.code === card.code) {
+          localStorage.setItem(
+            "favourites",
+            JSON.stringify(
+              this.state.favourites.filter((el) => el.code !== card.code)
+            )
+          );
+          return {
+            favourites: this.state.favourites.filter(
+              (el) => el.code !== card.code
+            ),
+          };
         }
       }
+      console.log("hhh");
+      allFavCars.push(card);
+      localStorage.setItem("favourites", JSON.stringify(allFavCars));
+      return { favourites: allFavCars };
     });
   };
 
