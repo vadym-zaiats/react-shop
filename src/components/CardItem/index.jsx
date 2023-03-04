@@ -12,22 +12,33 @@ class CardItem extends Component {
     };
   }
   componentDidMount = () => {
-    const { code } = this.props;
-    for (var i = 0; i < localStorage.length; i++) {
-      if (+localStorage.getItem(localStorage.key(i)) === code) {
-        this.setState({ favourite: true });
+    this.setState((states) => {
+      const { favourites, code } = this.props;
+      console.log(favourites);
+      for (const car of favourites) {
+        if (car.code === code) {
+          return { favourite: true };
+        }
       }
-    }
+    });
+    // if (allFav.length === 0) {
+    //   allFav.push(card);
+    //   localStorage.setItem("favourites", JSON.stringify(allFav));
+    //   return { favourites: allFav };
+    // } else {
+    //   for (let car of allFav) {
+    //     if (car.code === card.code) {
+    //       allFav.splice(card);
+    //       return console.log("Це авто вже є у favourites, треба видалити");
+    //     } else {
+    //       allFav.push(card);
+    //       localStorage.setItem("favourites", JSON.stringify(allFav));
+    //       return { favourites: allFav };
+    //     }
+    //   }
+    // }
   };
 
-  addToFav = (position) => {
-    this.setState((states) => {
-      let allFav = [...states.favourites];
-      allFav.push(position);
-      localStorage.setItem(position.title, JSON.stringify(position.code));
-      return { allFav };
-    });
-  };
   render() {
     const { logo, title, color, price, code, action, addToFavourite } =
       this.props;

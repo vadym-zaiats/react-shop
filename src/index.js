@@ -67,7 +67,7 @@ class App extends Component {
   };
 
   render() {
-    const { products } = this.state;
+    const { products, favourites } = this.state;
 
     if (!products) {
       return <div>Loading...</div>;
@@ -80,6 +80,7 @@ class App extends Component {
           <CardContainer
             products={products}
             action={this.openModal}
+            favourites={favourites}
             addToFav={this.addToFav}
           />
           {/* <Basket /> */}
