@@ -21,14 +21,14 @@ class App extends Component {
             text={"Ok"}
             onClick={() => {
               alert("You want to add car on basket!");
-              this.openModal();
+              this.toggleModal();
             }}
           />,
           <Button
             text={"Сancel"}
             onClick={() => {
               alert("You canceled this action");
-              this.openModal();
+              this.toggleModal();
             }}
           />,
         ],
@@ -50,14 +50,14 @@ class App extends Component {
       }
     });
   };
-  openModal = () => {
+  toggleModal = () => {
     const setActive = this.state.modal;
     setActive.isActive = !setActive.isActive;
     this.setState({ setActive });
   };
   closeModal = (e) => {
     if (e.target.classList.contains("Modal_modal_overlay__0uG9G")) {
-      this.openModal();
+      this.toggleModal();
     }
   };
   addToFav = (card) => {
@@ -97,7 +97,7 @@ class App extends Component {
         <div className={styles.main}>
           <CardContainer
             products={products}
-            action={this.openModal}
+            action={this.toggleModal}
             favourites={favourites}
             addToFav={this.addToFav}
           />
