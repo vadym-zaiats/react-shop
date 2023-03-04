@@ -54,13 +54,14 @@ class App extends Component {
       } else {
         for (let car of allFav) {
           if (car.code === card.code) {
-            allFav.splice(card);
             return console.log("Це авто вже є у favourites, треба видалити");
-          } else {
-            allFav.push(card);
-            localStorage.setItem("favourites", JSON.stringify(allFav));
-            return { favourites: allFav };
           }
+          // else {
+          //   console.log("Цього авто нема");
+          //   allFav.push(card);
+          //   localStorage.setItem("favourites", JSON.stringify(allFav));
+          //   return { favourites: allFav };
+          // }
         }
       }
     });
