@@ -4,7 +4,7 @@ import styles from "./main.module.scss";
 import Header from "./components/Header";
 import CardContainer from "./components/CardContainer";
 import Modal from "./components/Modal";
-import { logDOM } from "@testing-library/react";
+import Button from "./components/Button";
 // import Basket from "./components/Basket";
 
 class App extends Component {
@@ -16,6 +16,22 @@ class App extends Component {
       modal: {
         isActive: false,
         question: "Do you want to add this product to basket?",
+        actions: [
+          <Button
+            text={"Ok"}
+            onClick={() => {
+              alert("You want to add car on basket!");
+              this.openModal();
+            }}
+          />,
+          <Button
+            text={"Сancel"}
+            onClick={() => {
+              alert("You canceled this action");
+              this.openModal();
+            }}
+          />,
+        ],
       },
     };
   }
