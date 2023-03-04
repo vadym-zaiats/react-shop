@@ -48,21 +48,16 @@ class App extends Component {
     this.setState((states) => {
       let allFav = [...states.favourites];
       if (allFav.length === 0) {
+        console.log("Цього авто нема, додаю");
         allFav.push(card);
         localStorage.setItem("favourites", JSON.stringify(allFav));
         return { favourites: allFav };
       } else {
-        for (let car of allFav) {
-          if (car.code === card.code) {
-            return console.log("Це авто вже є у favourites, треба видалити");
-          }
-          // else {
-          //   console.log("Цього авто нема");
-          //   allFav.push(card);
-          //   localStorage.setItem("favourites", JSON.stringify(allFav));
-          //   return { favourites: allFav };
-          // }
-        }
+        return {
+          favourites: this.state.favourites.filter(
+            (el) => el.code !== card.code
+          ),
+        };
       }
     });
   };
