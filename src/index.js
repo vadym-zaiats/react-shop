@@ -20,6 +20,7 @@ class App extends Component {
     };
   }
   componentDidMount = () => {
+    // завантаження списку авто
     fetch("./collection.json")
       .then((res) => res.json())
       .then((res) => {
@@ -37,12 +38,23 @@ class App extends Component {
     }
   };
   addToFav = (card) => {
-    this.setState((states) => {
-      let allFav = [...states.favourite];
-      allFav.push(card);
-      localStorage.setItem("favourite", JSON.stringify(allFav));
-      return { allFav };
-    });
+    if (localStorage.getItem("favourite")) {
+      let favArr = JSON.parse(localStorage.getItem("favourite"));
+
+      console.log(favArr);
+    } else {
+      // this.setState((states) => {
+      //   if (localStorage.getItem("favourite")) {
+      //     console.log("пусто");
+      //   }
+      //   console.log([...states.favourite]);
+      //   let allFav = [...states.favourite];
+      //   allFav.push(card);
+      //   localStorage.setItem("favourite", JSON.stringify(allFav));
+      //   console.log(allFav);
+      //   return { allFav };
+      // });
+    }
   };
 
   render() {
