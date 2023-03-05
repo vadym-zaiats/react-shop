@@ -20,4 +20,12 @@ class Header extends Component {
     );
   }
 }
+Header.propTypes = {
+  favourites: PropTypes.number,
+  basket: PropTypes.number,
+};
+Header.defaultProps = {
+  favourites: null,
+  basket: null,
+};
 export default Header;

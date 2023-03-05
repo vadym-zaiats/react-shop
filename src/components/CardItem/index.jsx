@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import star from "../../img/star.svg";
 import addStar from "../../img/star0.svg";
+import death from "../../img/death.svg";
 import styles from "./CardItem.module.scss";
 import Button from "../Button";
 import Modal from "../Modal";
@@ -70,5 +71,34 @@ class CardItem extends Component {
     );
   }
 }
-
+CardItem.propTypes = {
+  logo: PropTypes.string,
+  title: PropTypes.string,
+  color: PropTypes.string,
+  price: PropTypes.number,
+  code: PropTypes.number,
+  toggleModal: PropTypes.func,
+  favourites: PropTypes.array,
+  addToFavourite: PropTypes.func,
+  addToBasket: PropTypes.func,
+};
+CardItem.defaultProps = {
+  logo: { death },
+  title: "Назва марки",
+  color: "Колір кузова",
+  price: "Вартість авто",
+  code: "Штрих-код",
+  toggleModal: () => {
+    console.log("Hello world");
+  },
+  favourites: () => {
+    console.log("Hello world");
+  },
+  addToFavourite: () => {
+    console.log("Hello world");
+  },
+  addToBasket: () => {
+    console.log("Hello world");
+  },
+};
 export default CardItem;

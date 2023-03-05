@@ -30,5 +30,24 @@ class CardContainer extends Component {
     );
   }
 }
-
+CardContainer.propTypes = {
+  products: PropTypes.array,
+  favourites: PropTypes.array,
+  toggleModal: PropTypes.func,
+  addToFav: PropTypes.func,
+  addToBasket: PropTypes.func,
+};
+CardContainer.defaultTypes = {
+  products: [],
+  favourites: [],
+  toggleModal: () => {
+    console.log("Hello world");
+  },
+  addToFav: () => {
+    console.log("Hello world");
+  },
+  addToBasket: () => {
+    console.log("Hello world");
+  },
+};
 export default CardContainer;
