@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import basket from "../../img/basket.svg";
 import favourite from "../../img/favourite.svg";
 import styles from "./Button.module.scss";
@@ -12,7 +13,7 @@ class Header extends Component {
           <img src={favourite} alt="favourite" />
         </div>
         <div className={styles.header_basket}>
-          <div>0</div>
+          <div>{this.props.basket}</div>
           <img src={basket} alt="basket" />
         </div>
       </div>

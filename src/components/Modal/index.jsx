@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import styles from "./Modal.module.scss";
 import Button from "../Button";
 class Modal extends Component {
@@ -13,7 +14,7 @@ class Modal extends Component {
             <Button
               text={"Ok"}
               onClick={() => {
-                alert("You added car on basket!");
+                console.log("You added car on basket!");
                 toggleModal();
                 addToBasket({ title, code });
               }}
@@ -21,7 +22,7 @@ class Modal extends Component {
             <Button
               text={"Сancel"}
               onClick={() => {
-                alert("You canceled this action");
+                console.log("You canceled this action");
                 toggleModal();
               }}
             />

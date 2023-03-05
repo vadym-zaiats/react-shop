@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import styles from "./main.module.scss";
 import Header from "./components/Header";
 import CardContainer from "./components/CardContainer";
-// import Modal from "./components/Modal";
 // import Basket from "./components/Basket";
 
 class App extends Component {
@@ -13,10 +12,6 @@ class App extends Component {
       favourites: [],
       basket: [],
       products: null,
-      // modal: {
-      //   isActive: false,
-      //   question: "Do you want to add this product to basket?",
-      // },
     };
   }
   componentDidMount = () => {
@@ -33,17 +28,13 @@ class App extends Component {
         return { favourites: carsFromJson };
       }
     });
+    this.setState(() => {
+      let carsFromJson = JSON.parse(localStorage.getItem("basket"));
+      if (carsFromJson) {
+        return { basket: carsFromJson };
+      }
+    });
   };
-  // toggleModal = () => {
-  //   const setActive = this.state.modal;
-  //   setActive.isActive = !setActive.isActive;
-  //   this.setState({ setActive });
-  // };
-  // closeModal = (e) => {
-  //   if (e.target.classList.contains("Modal_modal_overlay__0uG9G")) {
-  //     this.toggleModal();
-  //   }
-  // };
   addToFav = (card) => {
     this.setState((states) => {
       let allFavCars = [...states.favourites];
@@ -69,7 +60,17 @@ class App extends Component {
   };
 
   addToBasket = (card) => {
-    console.log(card);
+    this.setState((states) => {
+      let allCarsInBasket = [...states.basket];
+      for (let car of allCarsInBasket) {
+        if (car.code === card.code) {
+          return alert("Авто вже у корзині");
+        }
+      }
+      allCarsInBasket.push(card);
+      localStorage.setItem("basket", JSON.stringify(allCarsInBasket));
+      return { basket: allCarsInBasket };
+    });
   };
 
   render() {
@@ -81,7 +82,10 @@ class App extends Component {
 
     return (
       <>
-        <Header favourites={this.state.favourites.length} />
+        <Header
+          favourites={this.state.favourites.length}
+          basket={this.state.basket.length}
+        />
         <div className={styles.main}>
           <CardContainer
             products={products}
@@ -92,14 +96,6 @@ class App extends Component {
           />
           {/* <Basket /> */}
         </div>
-        {/* <Modal
-          isActive={this.state.modal.isActive}
-          question={this.state.modal.question}
-          actions={this.state.modal.actions}
-          toggleModal={this.toggleModal}
-          onClick={this.closeModal}
-          addToBasket={this.addToBasket}
-        /> */}
       </>
     );
   }

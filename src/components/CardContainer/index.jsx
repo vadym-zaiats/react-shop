@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import CardItem from "../CardItem";
 import styles from "./CardContainer.module.scss";
 class CardContainer extends Component {

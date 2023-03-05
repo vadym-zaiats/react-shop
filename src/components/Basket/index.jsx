@@ -1,4 +1,5 @@
 import { Component } from "react";
+import PropTypes from "prop-types";
 import styles from "./Basket.module.scss";
 
 class Basket extends Component {

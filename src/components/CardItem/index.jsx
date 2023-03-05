@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import star from "../../img/star.svg";
 import addStar from "../../img/star0.svg";
 import styles from "./CardItem.module.scss";
