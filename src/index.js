@@ -12,6 +12,7 @@ class App extends Component {
     super(props);
     this.state = {
       favourites: [],
+      basket: [],
       products: null,
       modal: {
         isActive: false,
@@ -20,7 +21,8 @@ class App extends Component {
           <Button
             text={"Ok"}
             onClick={() => {
-              alert("You want to add car on basket!");
+              this.addToBasket();
+              alert("You added car on basket!");
               this.toggleModal();
             }}
           />,
@@ -82,6 +84,10 @@ class App extends Component {
       localStorage.setItem("favourites", JSON.stringify(allFavCars));
       return { favourites: allFavCars };
     });
+  };
+
+  addToBasket = () => {
+    console.log("додано");
   };
 
   render() {

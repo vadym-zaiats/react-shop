@@ -9,7 +9,7 @@ class CardContainer extends Component {
       <>
         <ul className={styles.list}>
           {products.map(({ id, name, price, picture, barcode, color }) => (
-            <li key={id} className={styles.item}>
+            <li key={barcode} className={styles.item}>
               <CardItem
                 logo={picture}
                 title={name}
