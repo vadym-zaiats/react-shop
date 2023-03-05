@@ -3,8 +3,7 @@ import React, { Component } from "react";
 import styles from "./main.module.scss";
 import Header from "./components/Header";
 import CardContainer from "./components/CardContainer";
-import Modal from "./components/Modal";
-import Button from "./components/Button";
+// import Modal from "./components/Modal";
 // import Basket from "./components/Basket";
 
 class App extends Component {
@@ -14,27 +13,10 @@ class App extends Component {
       favourites: [],
       basket: [],
       products: null,
-      modal: {
-        isActive: false,
-        question: "Do you want to add this product to basket?",
-        // actions: [
-        //   <Button
-        //     text={"Ok"}
-        //     onClick={() => {
-        //       this.addToBasket();
-        //       alert("You added car on basket!");
-        //       this.toggleModal();
-        //     }}
-        //   />,
-        //   <Button
-        //     text={"Сancel"}
-        //     onClick={() => {
-        //       alert("You canceled this action");
-        //       this.toggleModal();
-        //     }}
-        //   />,
-        // ],
-      },
+      // modal: {
+      //   isActive: false,
+      //   question: "Do you want to add this product to basket?",
+      // },
     };
   }
   componentDidMount = () => {
@@ -52,16 +34,16 @@ class App extends Component {
       }
     });
   };
-  toggleModal = () => {
-    const setActive = this.state.modal;
-    setActive.isActive = !setActive.isActive;
-    this.setState({ setActive });
-  };
-  closeModal = (e) => {
-    if (e.target.classList.contains("Modal_modal_overlay__0uG9G")) {
-      this.toggleModal();
-    }
-  };
+  // toggleModal = () => {
+  //   const setActive = this.state.modal;
+  //   setActive.isActive = !setActive.isActive;
+  //   this.setState({ setActive });
+  // };
+  // closeModal = (e) => {
+  //   if (e.target.classList.contains("Modal_modal_overlay__0uG9G")) {
+  //     this.toggleModal();
+  //   }
+  // };
   addToFav = (card) => {
     this.setState((states) => {
       let allFavCars = [...states.favourites];
@@ -86,8 +68,8 @@ class App extends Component {
     });
   };
 
-  addToBasket = () => {
-    console.log("додано");
+  addToBasket = (card) => {
+    console.log(card);
   };
 
   render() {
@@ -103,20 +85,21 @@ class App extends Component {
         <div className={styles.main}>
           <CardContainer
             products={products}
-            action={this.toggleModal}
+            toggleModal={this.toggleModal}
             favourites={favourites}
             addToFav={this.addToFav}
+            addToBasket={this.addToBasket}
           />
           {/* <Basket /> */}
         </div>
-        <Modal
+        {/* <Modal
           isActive={this.state.modal.isActive}
           question={this.state.modal.question}
           actions={this.state.modal.actions}
           toggleModal={this.toggleModal}
           onClick={this.closeModal}
           addToBasket={this.addToBasket}
-        />
+        /> */}
       </>
     );
   }

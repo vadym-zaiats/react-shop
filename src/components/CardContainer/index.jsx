@@ -3,12 +3,13 @@ import CardItem from "../CardItem";
 import styles from "./CardContainer.module.scss";
 class CardContainer extends Component {
   render() {
-    const { products, action, addToFav, favourites } = this.props;
+    const { products, toggleModal, favourites, addToFav, addToBasket } =
+      this.props;
 
     return (
       <>
         <ul className={styles.list}>
-          {products.map(({ id, name, price, picture, barcode, color }) => (
+          {products.map(({ name, price, picture, barcode, color }) => (
             <li key={barcode} className={styles.item}>
               <CardItem
                 logo={picture}
@@ -16,9 +17,10 @@ class CardContainer extends Component {
                 color={color}
                 price={price}
                 code={barcode}
-                action={action}
+                toggleModal={toggleModal}
                 favourites={favourites}
                 addToFavourite={addToFav}
+                addToBasket={addToBasket}
               />
             </li>
           ))}

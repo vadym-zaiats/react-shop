@@ -3,12 +3,17 @@ import star from "../../img/star.svg";
 import addStar from "../../img/star0.svg";
 import styles from "./CardItem.module.scss";
 import Button from "../Button";
+import Modal from "../Modal";
 
 class CardItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
       favourite: false,
+      modal: {
+        isActive: false,
+        question: "Do you want to add this product to basket?",
+      },
     };
   }
   componentDidMount = () => {
@@ -21,9 +26,18 @@ class CardItem extends Component {
       }
     });
   };
-
+  toggleModal = () => {
+    const setActive = this.state.modal;
+    setActive.isActive = !setActive.isActive;
+    this.setState({ setActive });
+  };
+  closeModal = (e) => {
+    if (e.target.classList.contains("Modal_modal_overlay__0uG9G")) {
+      this.toggleModal();
+    }
+  };
   render() {
-    const { logo, title, color, price, code, action, addToFavourite } =
+    const { logo, title, color, price, code, addToFavourite, addToBasket } =
       this.props;
     return (
       <>
@@ -33,7 +47,7 @@ class CardItem extends Component {
         <p>Price: {price}$</p>
         <p>Barcode: {code}</p>
         <div className={styles.footer}>
-          <Button text="Add to basket" onClick={action} />
+          <Button text="Add to basket" onClick={this.toggleModal} />
           <img
             src={this.state.favourite ? star : addStar}
             onClick={() => {
@@ -42,6 +56,15 @@ class CardItem extends Component {
             alt={"is-favourite"}
           />
         </div>
+        <Modal
+          isActive={this.state.modal.isActive}
+          question={this.state.modal.question}
+          toggleModal={this.toggleModal}
+          onClick={this.closeModal}
+          addToBasket={addToBasket}
+          title={title}
+          code={code}
+        />
       </>
     );
   }
