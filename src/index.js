@@ -115,6 +115,7 @@ class App extends Component {
           actions={this.state.modal.actions}
           toggleModal={this.toggleModal}
           onClick={this.closeModal}
+          addToBasket={this.addToBasket}
         />
       </>
     );

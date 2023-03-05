@@ -3,7 +3,7 @@ import styles from "./Modal.module.scss";
 import Button from "../Button";
 class Modal extends Component {
   render() {
-    let { isActive, question, toggleModal, onClick } = this.props;
+    let { isActive, question, toggleModal, onClick, addToBasket } = this.props;
     return isActive ? (
       <div className={styles.modal_overlay} onClick={onClick}>
         <div className={styles.modal_window}>
@@ -14,9 +14,9 @@ class Modal extends Component {
               onClick={() => {
                 alert("You added car on basket!");
                 toggleModal();
+                addToBasket();
               }}
             />
-
             <Button
               text={"Сancel"}
               onClick={() => {
