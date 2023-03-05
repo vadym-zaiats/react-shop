@@ -17,23 +17,23 @@ class App extends Component {
       modal: {
         isActive: false,
         question: "Do you want to add this product to basket?",
-        actions: [
-          <Button
-            text={"Ok"}
-            onClick={() => {
-              this.addToBasket();
-              alert("You added car on basket!");
-              this.toggleModal();
-            }}
-          />,
-          <Button
-            text={"Сancel"}
-            onClick={() => {
-              alert("You canceled this action");
-              this.toggleModal();
-            }}
-          />,
-        ],
+        // actions: [
+        //   <Button
+        //     text={"Ok"}
+        //     onClick={() => {
+        //       this.addToBasket();
+        //       alert("You added car on basket!");
+        //       this.toggleModal();
+        //     }}
+        //   />,
+        //   <Button
+        //     text={"Сancel"}
+        //     onClick={() => {
+        //       alert("You canceled this action");
+        //       this.toggleModal();
+        //     }}
+        //   />,
+        // ],
       },
     };
   }
@@ -113,6 +113,7 @@ class App extends Component {
           isActive={this.state.modal.isActive}
           question={this.state.modal.question}
           actions={this.state.modal.actions}
+          toggleModal={this.toggleModal}
           onClick={this.closeModal}
         />
       </>
